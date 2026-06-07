@@ -1,10 +1,10 @@
 import logo from "./assets/logo.png";
-import heroImage from "./assets/hero-pickle.png";
-import chickenPickle from "./assets/chicken-pickle.jpeg";
-import prawnPickle from "./assets/prawn-pickle.jpeg";
-import beefPickle from "./assets/beef-pickle.jpeg";
-import sailfishPickle from "./assets/ola.jpeg";
-import tunaPickle from "./assets/kera-pickle.jpeg";
+
+import chickenPickle from "./assets/chicken-pickle.png";
+import prawnPickle from "./assets/prawn-pickle.png";
+import beefPickle from "./assets/beef-pickle.png";
+import sailfishPickle from "./assets/ola.png";
+import tunaPickle from "./assets/kera-pickle.png";
 import datesPickle from "./assets/datelemon.png";
 import jkpickle from "./assets/jack.png";
 import { Swiper, SwiperSlide } from "swiper/react";
