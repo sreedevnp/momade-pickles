@@ -21,7 +21,7 @@ function Contact() {
           <img
             src={logo}
             alt="Momade"
-            className="h-20 w-auto"
+            className="h-24 md:h-20 w-auto"
           />
 
           
@@ -216,11 +216,11 @@ function Contact() {
 
             {/* Bulk Orders */}
             <div className="bg-[#8B1E3F] text-white rounded-3xl p-10">
-              <h3 className="text-3xl mb-4">
+              <h3 className="text-2xl md:text-3xl mb-4">
                 Bulk Orders & Special Requests
               </h3>
 
-              <p className="leading-8 text-white/90">
+              <p className="text-base md:text-lg leading-7 text-white/90">
                 Looking for bulk quantities for events, weddings,
                 corporate gifting, supermarkets, restaurants or
                 retail stores? Contact us directly for special
@@ -260,7 +260,7 @@ function Contact() {
   </div>
 
   <div className="p-8">
-    <h3 className="text-3xl font-semibold text-[#8B1E3F]">
+    <h3 className="text-2xl md:text-3xl font-semibold text-[#8B1E3F]">
       Momade Homemade Pickles
     </h3>
 
