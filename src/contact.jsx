@@ -150,9 +150,9 @@ function Contact() {
             </p>
 
             <h1
-              className="text-6xl text-[#8B1E3F] mb-6"
-              style={{ fontFamily: "Cormorant Garamond" }}
-            >
+  className="text-4xl md:text-6xl text-[#8B1E3F] mb-6"
+  style={{ fontFamily: "Cormorant Garamond" }}
+>
               Contact Momade
             </h1>
 
@@ -168,29 +168,51 @@ function Contact() {
           <div className="grid md:grid-cols-2 gap-10">
 
             {/* Contact Info */}
-            <div className="bg-white rounded-3xl shadow-lg p-10">
-              <h2 className="text-3xl text-[#8B1E3F] mb-8">
-                Contact Information
-              </h2>
+            <div className="bg-white rounded-3xl shadow-lg p-6 md:p-10">
+  <h2 className="text-2xl md:text-3xl text-[#8B1E3F] mb-8">
+    Contact Information
+  </h2>
 
-              <div className="space-y-5 text-lg">
-                <p>
-                  📞 <strong>Call Us:</strong> +91 8281274530
-                </p>
+  <div className="space-y-8 text-lg">
 
-                <p>
-                  💬 <strong>WhatsApp:</strong> +91 8281274530
-                </p>
+    <div>
+      <div className="font-bold text-xl flex items-center gap-2">
+        📞 Call Us
+      </div>
+      <div className="mt-2 text-gray-700">
+        +91 8281274530
+      </div>
+    </div>
 
-                <p>
-                  📧 <strong>Email:</strong> momadepickles@gmail.com
-                </p>
+    <div>
+      <div className="font-bold text-xl flex items-center gap-2">
+        💬 WhatsApp
+      </div>
+      <div className="mt-2 text-gray-700">
+        +91 8281274530
+      </div>
+    </div>
 
-                <p>
-                  📍 <strong>Location:</strong> Kottayam, Kerala
-                </p>
-              </div>
-            </div>
+    <div>
+      <div className="font-bold text-xl flex items-center gap-2">
+        📧 Email
+      </div>
+      <div className="mt-2 text-gray-700 break-all">
+        momadepickles@gmail.com
+      </div>
+    </div>
+
+    <div>
+      <div className="font-bold text-xl flex items-center gap-2">
+        📍 Location
+      </div>
+      <div className="mt-2 text-gray-700">
+        Kottayam, Kerala
+      </div>
+    </div>
+
+  </div>
+</div>
 
             {/* Bulk Orders */}
             <div className="bg-[#8B1E3F] text-white rounded-3xl p-10">
@@ -224,13 +246,14 @@ function Contact() {
   <div className="relative">
 
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3931.9847770262522!2d76.49227677502809!3d9.767354990326517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwNDYnMDIuNSJOIDc2wrAyOSc0MS41IkU!5e0!3m2!1sen!2sin!4v1780764090814!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-      width="100%"
-      height="350"
-      style={{ border: 0 }}
-      loading="lazy"
-      allowFullScreen=""
-    ></iframe>
+  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3931.9847770262522!2d76.49227677502809!3d9.767354990326517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwNDYnMDIuNSJOIDc2wrAyOSc0MS41IkU!5e0!3m2!1sen!2sin!4v1780764090814!5m2!1sen!2sin"
+  width="100%"
+  height="350"
+  style={{ border: 0 }}
+  loading="lazy"
+  allowFullScreen
+  referrerPolicy="no-referrer-when-downgrade"
+/>
 
     
 
