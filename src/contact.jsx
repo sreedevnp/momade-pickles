@@ -165,7 +165,7 @@ function Contact() {
           </div>
 
           {/* Two Column Layout */}
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10 items-start">
 
             {/* Contact Info */}
             <div className="bg-white rounded-3xl shadow-lg p-6 md:p-10">
@@ -210,12 +210,20 @@ function Contact() {
         Kottayam, Kerala
       </div>
     </div>
+    <div>
+  <div className="font-bold text-xl flex items-center gap-2">
+    🛡️ FSSAI License
+  </div>
+  <div className="mt-2 text-gray-700">
+    2132416700063
+  </div>
+</div>
 
   </div>
 </div>
 
             {/* Bulk Orders */}
-            <div className="bg-[#8B1E3F] text-white rounded-3xl p-10">
+            <div className="bg-[#8B1E3F] text-white rounded-3xl p-10 max-w-xl">
               <h3 className="text-2xl md:text-3xl mb-4">
                 Bulk Orders & Special Requests
               </h3>
@@ -228,13 +236,28 @@ function Contact() {
               </p>
 
               <a
-                href="https://wa.me/918281274530"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block mt-8 bg-[#D4A017] text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
-              >
-                Chat on WhatsApp
-              </a>
+  href="https://wa.me/918281274530"
+  target="_blank"
+  rel="noreferrer"
+  className="
+    inline-block
+    mt-8
+    bg-[#D4A017]
+    text-black
+    px-10
+    py-4
+    rounded-full
+    font-semibold
+    shadow-lg
+    transition-all
+    duration-300
+    hover:scale-105
+    hover:shadow-2xl
+    hover:bg-[#E5B321]
+  "
+>
+  Chat on WhatsApp
+</a>
             </div>
 
           </div>
@@ -328,6 +351,9 @@ function Contact() {
         <p className="text-white/80 mt-2">
           PIN: 686604
         </p>
+        <p className="text-white/80 mt-2">
+  FSSAI Lic. No: 2132416700063
+</p>
       </div>
 
       <div>
@@ -370,6 +396,7 @@ function Contact() {
           >
             Contact
           </a>
+          
         </div>
       </div>
 

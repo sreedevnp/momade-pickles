@@ -378,7 +378,16 @@ useEffect(() => {
       Our Pickles
     </h2>
 
+    <div className="flex justify-center mb-12">
+  <div className="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-full border border-gray-200 shadow-sm">
+    <span className="text-[#D4A017]">✔</span>
+    <span className="text-gray-600 text-sm md:text-base">
+      FSSAI Lic. No: 2132416700063
+    </span>
+  </div>
+</div>
     <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-20">
+      
 {products.map((product, index) => (
   <div key={index} className="text-center">
 
@@ -618,6 +627,10 @@ useEffect(() => {
         <p className="text-white/80 mt-2">
           PIN: 686604
         </p>
+
+        <p className="text-white/80 mt-2">
+  FSSAI Lic. No: 2132416700063
+</p>
       </div>
 
       {/* Contact */}
@@ -674,7 +687,7 @@ useEffect(() => {
     <div className="border-t border-white/20 mt-10 pt-6">
 
       <p className="text-center text-white/80">
-        © 2026 Momade Homemade Pickles. All rights reserved.
+        © Momade Homemade Pickles. All rights reserved.
       </p>
 
       <p className="text-center text-white/60 mt-2">
