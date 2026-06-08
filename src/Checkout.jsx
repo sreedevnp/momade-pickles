@@ -95,7 +95,7 @@ useEffect(() => {
 
   const shipping =
     form.state === "Kerala"
-      ? totalQuantity * 1
+      ? totalQuantity * 40
       : totalQuantity * 80;
 
   const grandTotal = subtotal + shipping;
