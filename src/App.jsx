@@ -35,7 +35,7 @@ const products = [
   {
     name: "Boneless Chicken Miracle",
     image: chickenPickle,
-    price: "₹650",
+    price: "₹1",
     oldPrice: "₹799",
     weight: "500g",
   },
