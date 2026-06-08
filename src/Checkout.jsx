@@ -159,48 +159,49 @@ useEffect(() => {
 
       handler: async function (response) {
 
-  console.log("Handler started");
+  alert("Handler started");
 
   const orderId =
     "MOM-" + Date.now().toString().slice(-6);
 
-  try {
-
-    console.log("Sending email...");
-
-    await fetch(
-      "https://momade-pickles.onrender.com/send-order-email",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          orderId,
-          customer: form,
-          cart,
-          total: grandTotal,
-          paymentId: response.razorpay_payment_id,
-        }),
-      }
-    );
-
-    console.log("Email sent");
-
-  } catch (error) {
-
-    console.error("Email error:", error);
-
-  }
-
-  console.log("Clearing cart");
-
   clearCart();
 
-  console.log("Redirecting");
+  alert("Going to success page");
 
   window.location.href =
     `/success?orderId=${orderId}`;
+
+  // Send email in background
+  fetch(
+    "https://momade-pickles.onrender.com/send-order-email",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderId,
+        customer: {
+          name: form.name,
+          phone: form.phone,
+          state: form.state,
+          location: form.location,
+          address: form.address,
+          pincode: form.pincode,
+        },
+        cart,
+        total: grandTotal,
+        paymentId: response.razorpay_payment_id,
+      }),
+    }
+  )
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error("Email failed:", error);
+    });
+
 },
 };
 
