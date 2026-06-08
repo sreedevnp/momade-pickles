@@ -124,7 +124,7 @@ useEffect(() => {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/create-order",
+      "https://momade-pickles.onrender.com/create-order",
       {
         method: "POST",
         headers: {
@@ -166,7 +166,7 @@ useEffect(() => {
   try {
 
     await fetch(
-      "http://localhost:5000/send-order-email",
+      "https://momade-pickles.onrender.com/send-order-email",
       {
         method: "POST",
 
