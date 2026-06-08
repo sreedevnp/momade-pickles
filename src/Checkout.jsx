@@ -159,11 +159,14 @@ useEffect(() => {
 
       handler: async function (response) {
 
+  console.log("Handler started");
+
   const orderId =
-    "MOM-" +
-    Date.now().toString().slice(-6);
+    "MOM-" + Date.now().toString().slice(-6);
 
   try {
+
+    console.log("Sending email...");
 
     await fetch(
       "https://momade-pickles.onrender.com/send-order-email",
@@ -174,14 +177,7 @@ useEffect(() => {
         },
         body: JSON.stringify({
           orderId,
-          customer: {
-            name: form.name,
-            phone: form.phone,
-            state: form.state,
-            location: form.location,
-            address: form.address,
-            pincode: form.pincode,
-          },
+          customer: form,
           cart,
           total: grandTotal,
           paymentId: response.razorpay_payment_id,
@@ -189,13 +185,22 @@ useEffect(() => {
       }
     );
 
-  } catch (error) {
-  console.error(error);
+    console.log("Email sent");
 
-  alert(
-    "Payment successful but email failed."
-  );
-}
+  } catch (error) {
+
+    console.error("Email error:", error);
+
+  }
+
+  console.log("Clearing cart");
+
+  clearCart();
+
+  console.log("Redirecting");
+
+  window.location.href =
+    `/success?orderId=${orderId}`;
 },
 };
 
