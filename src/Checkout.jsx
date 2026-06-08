@@ -166,40 +166,37 @@ useEffect(() => {
   try {
 
     await fetch(
-      "https://momade-pickles.onrender.com/send-order-email",
-      {
-        method: "POST",
+  "https://momade-pickles.onrender.com/send-order-email",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      orderId,
+      customer: {
+        name: form.name,
+        phone: form.phone,
+        state: form.state,
+        location: form.location,
+        address: form.address,
+        pincode: form.pincode,
+      },
+      cart,
+      total: grandTotal,
+      paymentId: response.razorpay_payment_id,
+    }),
+  }
+);
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+clearCart();
 
-        body: JSON.stringify({
-          orderId,
+alert("Redirecting to success page");
 
-          customer: {
-            name: form.name,
-            phone: form.phone,
-            state: form.state,
-            location: form.location,
-            address: form.address,
-            pincode: form.pincode,
-          },
+console.log("Going to success page");
 
-          cart,
-
-          total: grandTotal,
-
-          paymentId:
-            response.razorpay_payment_id,
-        }),
-      }
-    );
-
-    clearCart();
-
-    window.location.href =
-      `/success?orderId=${orderId}`;
+window.location.href =
+  `/success?orderId=${orderId}`;
 
   } catch (error) {
   console.error(error);
