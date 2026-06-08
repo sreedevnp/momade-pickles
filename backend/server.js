@@ -42,12 +42,12 @@ app.post("/create-order", async (req, res) => {
 });
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_PASS,
   },
 });
 
@@ -85,13 +85,13 @@ app.post("/send-order-email", async (req, res) => {
       .join("\n");
 
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+  from: "Momade Pickles <momadepickles1@gmail.com>",
 
-      to: "momadepickles1@gmail.com",
+  to: "momadepickles1@gmail.com",
 
-      subject: `New Order - ${orderId}`,
+  subject: `New Order - ${orderId}`,
 
-      text: `
+  text: `...
 NEW ORDER RECEIVED
 
 Order ID:
