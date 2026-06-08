@@ -159,7 +159,6 @@ useEffect(() => {
 
       handler: async function (response) {
 
-  alert("Handler started");
 
   const orderId =
     "MOM-" + Date.now().toString().slice(-6);
@@ -198,7 +197,6 @@ useEffect(() => {
 
   clearCart();
 
-  alert("About to redirect");
 
   window.location.href =
     `/success?orderId=${orderId}`;
