@@ -45,18 +45,24 @@ const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
+  requireTLS: true,
+
   auth: {
     user: process.env.BREVO_USER,
     pass: process.env.BREVO_PASS,
   },
+
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
 });
 
 console.log("BREVO_USER exists:", !!process.env.BREVO_USER);
 console.log("BREVO_PASS exists:", !!process.env.BREVO_PASS);
 
-transporter.verify((error, success) => {
+transporter.verify(function (error, success) {
   if (error) {
-    console.log("SMTP Error:", error);
+    console.error("SMTP Error:", error);
   } else {
     console.log("SMTP Server Ready");
   }
@@ -85,7 +91,7 @@ app.post("/send-order-email", async (req, res) => {
       .join("\n");
 
     await transporter.sendMail({
-  from: "Momade Pickles <momadepickles1@gmail.com>",
+  from: process.env.BREVO_USER,
 
   to: "momadepickles1@gmail.com",
 
