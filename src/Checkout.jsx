@@ -164,44 +164,44 @@ useEffect(() => {
   const orderId =
     "MOM-" + Date.now().toString().slice(-6);
 
+  try {
+
+    fetch(
+      "https://momade-pickles.onrender.com/send-order-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderId,
+          customer: {
+            name: form.name,
+            phone: form.phone,
+            state: form.state,
+            location: form.location,
+            address: form.address,
+            pincode: form.pincode,
+          },
+          cart,
+          total: grandTotal,
+          paymentId: response.razorpay_payment_id,
+        }),
+      }
+    ).catch((err) => {
+      console.error("Email failed:", err);
+    });
+
+  } catch (err) {
+    console.error(err);
+  }
+
   clearCart();
 
-  alert("Going to success page");
+  alert("About to redirect");
 
   window.location.href =
     `/success?orderId=${orderId}`;
-
-  // Send email in background
-  fetch(
-    "https://momade-pickles.onrender.com/send-order-email",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        orderId,
-        customer: {
-          name: form.name,
-          phone: form.phone,
-          state: form.state,
-          location: form.location,
-          address: form.address,
-          pincode: form.pincode,
-        },
-        cart,
-        total: grandTotal,
-        paymentId: response.razorpay_payment_id,
-      }),
-    }
-  )
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error("Email failed:", error);
-    });
-
 },
 };
 
