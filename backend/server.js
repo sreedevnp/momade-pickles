@@ -42,16 +42,28 @@ app.post("/create-order", async (req, res) => {
 });
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
 
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("SMTP Error:", error);
+  } else {
+    console.log("SMTP Server Ready");
+  }
+});
+
 app.post("/send-order-email", async (req, res) => {
   try {
+
+    console.log("Email request received");
+
     const {
       orderId,
       customer,
@@ -59,6 +71,8 @@ app.post("/send-order-email", async (req, res) => {
       total,
       paymentId,
     } = req.body;
+
+    console.log("Sending email for order:", orderId);
 
     const products = cart
       .map(
@@ -108,6 +122,8 @@ Payment ID:
 ${paymentId}
       `,
     });
+
+    console.log("Email sent successfully");
 
     res.json({
       success: true,
