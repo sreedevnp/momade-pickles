@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import Cart from "./Cart";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Success from "./success";
+import Success from "./Success";
 
 import App from "./App.jsx";
 import Contact from "./contact.jsx";
