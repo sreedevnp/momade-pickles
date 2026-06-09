@@ -3,9 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const Razorpay = require("razorpay");
-const nodemailer = require("nodemailer");
-
-
+const SibApiV3Sdk = require("@getbrevo/brevo");
 
 const app = express();
 
@@ -41,27 +39,14 @@ app.post("/create-order", async (req, res) => {
   }
 });
 
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
-  auth: {
-     user: process.env.BREVO_USER,
-    pass: process.env.BREVO_PASS,
-  },
-});
+apiInstance.setApiKey(
+  SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
-console.log("BREVO_USER exists:", !!process.env.BREVO_USER);
-console.log("BREVO_PASS exists:", !!process.env.BREVO_PASS);
-
-transporter.verify(function (error, success) {
-  if (error) {
-    console.error("SMTP Error:", error);
-  } else {
-    console.log("SMTP Server Ready");
-  }
-});
+console.log("BREVO_API_KEY exists:", !!process.env.BREVO_API_KEY);
 
 app.post("/send-order-email", async (req, res) => {
   try {
@@ -85,14 +70,21 @@ app.post("/send-order-email", async (req, res) => {
       )
       .join("\n");
 
-    await transporter.sendMail({
-  from: process.env.BREVO_USER,
+    await apiInstance.sendTransacEmail({
+  sender: {
+    name: "Momade Pickles",
+    email: "momadepickles1@gmail.com",
+  },
 
-  to: "momadepickles1@gmail.com",
+  to: [
+    {
+      email: "momadepickles1@gmail.com",
+    },
+  ],
 
   subject: `New Order - ${orderId}`,
 
-  text: `...
+  textContent: `
 NEW ORDER RECEIVED
 
 Order ID:
@@ -124,8 +116,8 @@ Total:
 
 Payment ID:
 ${paymentId}
-      `,
-    });
+`,
+});
 
     console.log("Email sent successfully");
 
