@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const Razorpay = require("razorpay");
-const SibApiV3Sdk = require("@getbrevo/brevo");
+const SibApiV3Sdk = require("sib-api-v3-sdk");
 
 const app = express();
 
@@ -39,12 +39,15 @@ app.post("/create-order", async (req, res) => {
   }
 });
 
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+const defaultClient = SibApiV3Sdk.ApiClient.instance;
 
-apiInstance.setApiKey(
-  SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY
-);
+const apiKey =
+  defaultClient.authentications["api-key"];
+
+apiKey.apiKey = process.env.BREVO_API_KEY;
+
+const brevo =
+  new SibApiV3Sdk.TransactionalEmailsApi();
 
 console.log("BREVO_API_KEY exists:", !!process.env.BREVO_API_KEY);
 
@@ -70,7 +73,7 @@ app.post("/send-order-email", async (req, res) => {
       )
       .join("\n");
 
-    await apiInstance.sendTransacEmail({
+    await brevo.sendTransacEmail({
   sender: {
     name: "Momade Pickles",
     email: "momadepickles1@gmail.com",
