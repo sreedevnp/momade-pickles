@@ -43,18 +43,13 @@ app.post("/create-order", async (req, res) => {
 
 const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
+  port: 465,
+  secure: true,
 
   auth: {
     user: process.env.BREVO_USER,
     pass: process.env.BREVO_PASS,
   },
-
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 30000,
 });
 
 console.log("BREVO_USER exists:", !!process.env.BREVO_USER);
