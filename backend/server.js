@@ -43,11 +43,11 @@ app.post("/create-order", async (req, res) => {
 
 const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
 
   auth: {
-    user: process.env.BREVO_USER,
+     user: process.env.BREVO_USER,
     pass: process.env.BREVO_PASS,
   },
 });
